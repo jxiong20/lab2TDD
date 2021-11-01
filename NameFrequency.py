@@ -21,8 +21,8 @@ class NameFrequency:
         data_frame = dict(data[column_name].str.split(" ", n=1, expand=True))
         self.data_frame = data_frame
         if isinstance(self.data_frame, pd.DataFrame):
-            return True
-        return False
+            return False
+        return True
 
     # making separate data set column from specific data frame
     def selectingColumn(self, column_name, column_index):
@@ -33,10 +33,9 @@ class NameFrequency:
 
         if column_name1 not in self.data_set.columns or column_name2 not in self.data_set.columns:
             return False
-        self.plot_group1 = self.data_set.groupby([column_name1]).size().reset_index(name='counts').sort_values('counts',
-                                                                                                               ascending=False).head(
+        self.plot_group1 = self.data_set.groupby([column_name1]).size().reset_index(name='counts').sort_values('counts',ascending=False).head(
             20)
-        self.plot_group2 = self.data_set.groupby([column_name2]).size().reset_index(name='counts').sort_values('counts',                                                                                                               ascending=False).head(
+        self.plot_group2 = self.data_set.groupby([column_name2]).size().reset_index(name='counts').sort_values('counts',ascending=False).head(
             20)
         return True
 
